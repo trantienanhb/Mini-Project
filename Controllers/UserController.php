@@ -13,13 +13,17 @@ class UserController
             $message=[];
             if ($username != '' && $password != '') {
                 $usermodel = new UserModel();
-                $user = $usermodel->login($username, $password);
+                $user = $usermodel->user($username, $password);
                 if ($user) {
                     if (!empty($_POST["remember"])) {
-
+                        setcookie ("username",$_POST["username"],time()+ 3600);
+                        setcookie ("password",$_POST["password"],time()+ 3600);
+                        echo "Cookies Set Successfuly";
                         $_SESSION["username"] = $username;;
                     } else {
-
+                        setcookie("username","");
+                        setcookie("password","");
+                        echo "Cookies Not Set";
                     }
                     header("location:Views/home.php");
                 } else {

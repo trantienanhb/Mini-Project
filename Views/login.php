@@ -30,14 +30,14 @@
         <div class="text-danger"">  </div>
         <div class="form-group">
             <label for="">Username</label>
-            <input name="username" type="text" value="" class="form-control" />
+            <input name="username" type="text" value="<?php if (isset($_COOKIE["username"])){echo $_COOKIE["username"];}?>" required placeholder="Username" class="form-control" />
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input name="password" type="password" value="" class="form-control" />
+            <input name="password" type="password" value="<?php if (isset($_COOKIE["password"])){echo $_COOKIE["password"];}?>" required placeholder="Password" class="form-control" />
         </div>
         <div class="form-group">
-            <input type="checkbox" name="remember"  />
+            <input type="checkbox" name="remember" <?php if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])){ echo "checked";}?> />
             <label for="remember-me">Remember me</label>
         </div>
         <div class="form-group">
