@@ -19,7 +19,7 @@ class UserController
                         setcookie ("username",$_POST["username"],time()+ 3600);
                         setcookie ("password",$_POST["password"],time()+ 3600);
                         echo "Cookies Set Successfuly";
-                        $_SESSION["username"] = $username;;
+                        $_SESSION["username"] = $username;
                     } else {
                         setcookie("username","");
                         setcookie("password","");
@@ -28,11 +28,11 @@ class UserController
                     header("location:Views/home.php");
                 } else {
                     require_once "Views/login.php";
-                    echo "Tài Khoản mật khẩu không chính xác";
+                    $_SESSION['message']="Tài Khoản mật khẩu không chính xác!";
                 }
             } else {
                 require_once "Views/login.php";
-                echo "Bạn chưa nhập hết thông tin";
+                
             }
         }
 
